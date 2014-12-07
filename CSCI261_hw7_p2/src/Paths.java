@@ -3,7 +3,8 @@
  * 
  * @author	Derek Brown <djb3718@rit.edu>
  *
- * Purpose:	Find the minimum distance from u to v for every pair of vertices.
+ * Purpose:	Find the minimum distance from u to v for every pair of
+ *		vertices.
  */
 
 import java.util.Scanner;
@@ -24,13 +25,13 @@ public class Paths {
 	// Constructor
 	
 	/**
-	 * Constructor for creating an object used for completing the Paths problem
-	 * algorithm, The object stores important information needed to solve the
-	 * problem, like the graph and the solution array.
+	 * Constructor for creating an object used for completing the Paths
+	 * problem algorithm, The object stores important information needed
+	 * to solve the problem, like the graph and the solution array.
 	 * 
 	 * @param numVertices	The number of vertices in the graph.
 	 * @param numEdgeshe	The number of edges in the graph.
-	 * @param graph			The array representing the graph.
+	 * @param graph		The array representing the graph.
 	 */
 	public Paths( int numVertices, int numEdges, int[][] graph ) {
 		this.numVertices = numVertices;
@@ -49,8 +50,9 @@ public class Paths {
 	// Methods
 	
 	/**
-	 * The main algorithm for solving the Paths problem,  Uses the Floyd-Warshall
-	 * algorithm for finding all the shortest paths for each pair.
+	 * The main algorithm for solving the Paths problem,  Uses the
+	 * Floyd-Warshall algorithm for finding all the shortest paths for
+	 * each pair.
 	 */
 	public void findPaths() {
 		for( int i = 1 ; i <= numVertices ; i++ ) {
@@ -63,13 +65,15 @@ public class Paths {
 				for( int j = 1 ; j <= numVertices ; j++ ) {
 					int second;
 					if( S[i][k][k-1] == Integer.MAX_VALUE ||
-							S[k][j][k-1] == Integer.MAX_VALUE ) {
+					S[k][j][k-1] == Integer.MAX_VALUE ) {
 						second = Integer.MAX_VALUE;
 					}//end if
 					else{
-						second = S[i][k][k-1] + S[k][j][k-1];
+						second = S[i][k][k-1] +
+							S[k][j][k-1];
 					}//end else
-					S[i][j][k] = Math.min( S[i][j][k-1], second );
+					S[i][j][k] = Math.min( S[i][j][k-1],
+						second );
 				}//end for j
 			}//end for i
 		}//end for k
@@ -83,14 +87,17 @@ public class Paths {
 		String minPathInf = "inf";
 		for( int i = 1 ; i <= numVertices ; i++ ) {
 			for( int j = 1 ; j <= numVertices ; j++ ) {
-				if( S[i][j][numVertices] == Integer.MAX_VALUE ) {
-					System.out.printf( "%s/%d ", minPathInf, 0 );
+				if( S[i][j][numVertices] ==
+					Integer.MAX_VALUE ) {
+					System.out.printf( "%s/%d ",
+						minPathInf, 0 );
 				}//end if
 				else if( S[i][j][numVertices] == 0 ) {
 					System.out.printf( "%d/%d ", 0, 1 );
 				}//end else if
 				else {
-					System.out.printf( "%d/%d ", S[i][j][numVertices], numPath );
+					System.out.printf( "%d/%d ",
+						S[i][j][numVertices], numPath );
 				}//end else
 			}//end for j
 			System.out.println();
@@ -98,8 +105,9 @@ public class Paths {
 	}//end printResult
 	
 	/**
-	 * The main logic for the program, Reads input from the user and then feeds
-	 * that information into the algorithm, and then displays the results.
+	 * The main logic for the program, Reads input from the user and then
+	 * feeds that information into the algorithm, and then displays the
+	 * results.
 	 * 
 	 * @param args	Command line arguments, unused.
 	 */
